@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 import Link from "next/link";
-import { useStoreMenu } from "@/app/store/use-store-menu";
+import { useStoreMenu } from "@/store/use-store-menu";
 
 const Header = () => {
     const menu = useStoreMenu(state => state.headerMenu);
@@ -13,7 +13,7 @@ const Header = () => {
                 <div className="flex items-center justify-between">
                     <Link
                         className="rounded-md text-gray-950 font-semibold tracking-tight"
-                        href="/"
+                        href="/frontend/public"
                     >Developer Showcase</Link>
 
                     <menu className="hidden md:flex gap-6 text-gray-900 font-medium">

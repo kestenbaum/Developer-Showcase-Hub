@@ -1,4 +1,4 @@
-import { config } from "@/app/config/size.config";
+import { config } from "@/config/size.config";
 
 export default function Home() {
   return (
