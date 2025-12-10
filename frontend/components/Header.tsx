@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useStoreMenu } from "@/store/use-store-menu";
 
 const Header = () => {
+    const { open, toggle, close } = useStoreMenu();
     const menu = useStoreMenu(state => state.headerMenu);
-    const [open, setOpen] = React.useState<boolean>(false);
 
     return (
         <header className="bg-gray-100 border-b border-gray-200 shadow-[0_4px_14px_rgba(0,0,0,0.08)] sticky top-0 w-full">
@@ -22,7 +22,7 @@ const Header = () => {
                                 key={item.id}
                                 className="flex gap-4 text-gray-600 font-medium"
                                 href={item.link}
-                                onClick={() => {setOpen(false)}}
+                                onClick={close}
                             >
                                 {item.text}
                             </Link>)}
@@ -30,7 +30,7 @@ const Header = () => {
 
                     <button
                         className="md:hidden text-gray-900 focus:outline-none z-50"
-                        onClick={() => {setOpen(!open)}}
+                        onClick={toggle}
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             {open ? (
@@ -51,7 +51,7 @@ const Header = () => {
                                 key={item.id}
                                 className="flex gap-4 text-gray-600 font-medium"
                                 href={item.link}
-                                onClick={() => {setOpen(false)}}
+                                onClick={close}
                             >
                                 {item.text}
                             </Link>)}

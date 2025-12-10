@@ -8,6 +8,9 @@ interface MenuItem {
 
 interface IState {
     headerMenu: MenuItem[];
+    open: boolean;
+    toggle?: () => void,
+    close?: () => void,
 }
 
 const State: IState = {
@@ -32,9 +35,13 @@ const State: IState = {
             link: "/contact",
             text: "Contact",
         }
-    ]
+    ],
+    open: false,
 }
 
 export const useStoreMenu = create<IState>((set) => ({
     ...State,
+    open: false,
+    toggle: () => set((state) => ({ open: !state.open })),
+    close: () => set({ open: false }),
 }))
