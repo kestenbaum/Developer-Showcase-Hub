@@ -1,8 +1,10 @@
 "use client"
 import React from 'react';
 import Link from "next/link";
+import { useStoreMenu } from "@/app/store/use-store-menu";
 
 const Header = () => {
+    const menu = useStoreMenu(state => state.headerMenu);
     const [open, setOpen] = React.useState<boolean>(false);
 
     return (
@@ -15,10 +17,15 @@ const Header = () => {
                     >Developer Showcase</Link>
 
                     <menu className="hidden md:flex gap-6 text-gray-900 font-medium">
-                        <span className="flex gap-4 text-gray-600 font-medium">Home</span>
-                        <span className="flex gap-4 text-gray-600 font-medium">Portfolio</span>
-                        <span className="flex gap-4 text-gray-600 font-medium">About</span>
-                        <span className="flex gap-4 text-gray-600 font-medium">Contact</span>
+                        {menu && menu.map(item =>
+                            <Link
+                                key={item.id}
+                                className="flex gap-4 text-gray-600 font-medium"
+                                href={item.link}
+                                onClick={() => {setOpen(false)}}
+                            >
+                                {item.text}
+                            </Link>)}
                     </menu>
 
                     <button
@@ -39,10 +46,15 @@ const Header = () => {
             {open && (
                 <div className="fixed top-0 w-full py-3.5 bg-gray-100 border-gray-200 shadow-[0_4px_14px_rgba(0,0,0,0.08)] z-40 flex flex-col items-center justify-center space-y-6 md:hidden">
                     <menu className="flex flex-col gap-4 text-gray-900 font-medium">
-                        <Link href="/">Home</Link>
-                        <Link href="/portfolio">Portfolio</Link>
-                        <Link href="/about">About</Link>
-                        <Link href="/contact">Contact</Link>
+                        {menu && menu.map(item =>
+                            <Link
+                                key={item.id}
+                                className="flex gap-4 text-gray-600 font-medium"
+                                href={item.link}
+                                onClick={() => {setOpen(false)}}
+                            >
+                                {item.text}
+                            </Link>)}
                     </menu>
                 </div>
             )}
