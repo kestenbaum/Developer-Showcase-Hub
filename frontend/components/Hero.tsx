@@ -1,5 +1,6 @@
 import React from 'react';
 import { config } from "@/config/size.config";
+import Button from "@/components/UI/Button";
 
 const Hero = () => {
     return (
@@ -20,10 +21,7 @@ const Hero = () => {
                         A Result-Oriented Web Developer building and managing Websites and Web Applications that leads to the success of the overall product
                     </p>
 
-                    <button className="bg-black text-white px-10 py-4 rounded-lg font-bold text-lg uppercase tracking-wider shadow-lg cursor-pointer hover:bg-gray-800 hover:-translate-y-1 transition-all duration-300">
-                        Projects
-                    </button>
-
+                    <Button>Projects</Button>
                 </div>
             </div>
         </section>
