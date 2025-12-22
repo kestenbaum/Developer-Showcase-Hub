@@ -7,7 +7,7 @@ import Title from "@/components/UI/Title";
 
 const About = () => {
     return (
-        <section className="w-full bg-gray-50 py-20 md:py-28" id="about">
+        <section className="w-full bg-[#fafafa] py-20 md:py-28" id="about">
             <Container>
                 <Title title="About Me" description="Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
