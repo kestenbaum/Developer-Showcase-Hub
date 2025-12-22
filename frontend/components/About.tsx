@@ -3,20 +3,13 @@ import Button from "@/components/UI/Button";
 import { Container } from "./Container";
 import Skill from "@/components/UI/Skill";
 import Link from "next/link";
+import Title from "@/components/UI/Title";
 
 const About = () => {
     return (
         <section className="w-full bg-gray-50 py-20 md:py-28" id="about">
             <Container>
-                <div className="flex flex-col items-center justify-center w-full mb-16">
-                    <h2 className="font-extrabold text-4xl text-gray-900 text-center mb-6">
-                        About Me
-                    </h2>
-                    <span className="w-16 h-1.5 bg-blue-600 rounded mb-6"></span>
-                    <p className="font-medium text-lg md:text-xl text-center text-gray-600 max-w-3xl leading-relaxed">
-                        Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology
-                    </p>
-                </div>
+                <Title title="About Me" description="Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology" />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
                     <div>
                         <h3 className="text-gray-900 text-2xl mb-6 font-bold">
