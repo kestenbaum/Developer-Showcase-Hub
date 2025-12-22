@@ -1,16 +1,9 @@
-import { config } from "@/config/size.config";
+import Hero from "@/components/Hero";
 
 export default function Home() {
   return (
-    <div
-        className="bg-gray-50"
-        style={{ height: `calc(100vh - ${config.headerSize}px)`}}
-    >
-        <div className="mx-auto px-4 max-w-5xl">
-           <div className="text-gray-800 pt-5">
-               test
-           </div>
-        </div>
-    </div>
+    <>
+        <Hero />
+    </>
   );
 }
