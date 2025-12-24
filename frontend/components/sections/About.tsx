@@ -15,14 +15,14 @@ const About = () => {
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
                     <div>
-                        <h3 className="text-gray-900 text-2xl mb-6 font-bold">Get to know me!</h3>
+                        <h3 className="text-gray-900 text-[20px] mb-6 font-bold">Get to know me!</h3>
                         <div className="text-gray-600 text-lg leading-relaxed mb-8 space-y-4">
-                            <p>
+                            <p className="text-black text-[14px]">
                                 I'm a Frontend Focused Web Developer building and managing the Front-end of Websites
                                 and Web Applications that leads to the success of the overall product. Check out
                                 some of my work in the Projects section.
                             </p>
-                            <p>
+                            <p className="text-black text-[14px]">
                                 I also like sharing content related to the stuff that I have learned over the years
                                 in Web Development so it can help other people of the Dev Community. Feel free to
                                 Connect or Follow me on my{" "}
@@ -34,7 +34,7 @@ const About = () => {
                                 </Link>
                                 .
                             </p>
-                            <p>
+                            <p className="text-black text-[14px]">
                                 I'm open to Job opportunities where I can contribute, learn and grow. If you have a
                                 good opportunity that matches my skills and experience then don't hesitate to
                                 contact me.
@@ -45,7 +45,7 @@ const About = () => {
                     </div>
 
                     <div>
-                        <h3 className="text-gray-900 text-2xl mb-6 font-bold">My Skills</h3>
+                        <h3 className="text-gray-900 text-[20px] mb-6 font-bold">My Skills</h3>
 
                         <ul className="flex flex-wrap gap-3">
                             <Skill>HTML</Skill>
