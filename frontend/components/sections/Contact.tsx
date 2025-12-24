@@ -1,4 +1,3 @@
-import React from "react"
 import Container from "@/components/layout/Container"
 import Button from "@/components/UI/Button"
 import Field from "@/components/UI/Field"
@@ -20,7 +19,7 @@ const Contact = () => {
                         description="Feel free to Contact me by submitting the form below and I will get back to you as soon as possible"
                     />
 
-                    <form className="bg-white p-6 md:p-10 rounded-xl shadow-xl w-full max-w-[700px]">
+                    <form className="bg-white p-5 rounded-xl shadow-xl w-full max-w-[500px]">
                         <Field label="Name" id="name" name="name" placeholder="Enter Your Name" required/>
                         <Field
                             label="Email"
