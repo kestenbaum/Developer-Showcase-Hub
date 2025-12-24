@@ -1,11 +1,4 @@
-import React, { FC } from 'react';
-
-interface Props {
-    title: string;
-    description: string;
-}
-
-const Title: FC<Props> = ({ title, description}) => {
+const Title = ({title, description}: { title: string, description: string }) => {
     return (
         <div className="flex flex-col items-center justify-center w-full mb-16">
             <h2 className="font-extrabold text-4xl text-gray-900 text-center mb-6">
