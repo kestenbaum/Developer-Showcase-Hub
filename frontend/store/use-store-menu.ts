@@ -1,4 +1,4 @@
-import { create } from "zustand/react";
+import {create} from "zustand/react";
 
 interface MenuItem {
     id: number;
@@ -17,22 +17,22 @@ const State: IState = {
     headerMenu: [
         {
             id: 1,
-            link: "/",
+            link: "hero",
             text: "Home",
         },
         {
             id: 2,
-            link: "/portfolio",
+            link: "projects",
             text: "Portfolio",
         },
         {
             id: 3,
-            link: "/about",
+            link: "about",
             text: "About",
         },
         {
             id: 4,
-            link: "/contact",
+            link: "contact",
             text: "Contact",
         }
     ],
@@ -42,6 +42,6 @@ const State: IState = {
 export const useStoreMenu = create<IState>((set) => ({
     ...State,
     open: false,
-    toggle: () => set((state) => ({ open: !state.open })),
-    close: () => set({ open: false }),
+    toggle: () => set((state) => ({open: !state.open})),
+    close: () => set({open: false}),
 }))

@@ -1,10 +1,10 @@
 import React from 'react';
-import { config } from "@/config/size.config";
 import Button from "@/components/UI/Button";
+import Link from "next/link";
 
 const Hero = () => {
     return (
-        <section className="relative w-full h-screen flex items-center justify-center overflow-hidden" style={{ height: `calc(100vh - ${config.headerSize}px)`}}>
+        <section className="relative w-full h-screen flex items-center justify-center overflow-hidden" id="hero">
             <img
                 src="/common-bg.svg"
                 alt="Hero Background"
@@ -17,11 +17,14 @@ const Hero = () => {
                         Hey, I'm Oleksii Vovnenko
                     </h1>
 
-                    <p className="text-lg md:text-xl text-gray-700 max-w-2xl leading-relaxed">
-                        A Result-Oriented Web Developer building and managing Websites and Web Applications that leads to the success of the overall product
+                    <p className="text-xs text-gray-700 max-w-2xl leading-relaxed">
+                        A Result-Oriented Web Developer building and managing Websites and Web Applications that leads
+                        to the success of the overall product
                     </p>
 
-                    <Button>Projects</Button>
+                    <Link href="#projects">
+                        <Button>Projects</Button>
+                    </Link>
                 </div>
             </div>
         </section>
