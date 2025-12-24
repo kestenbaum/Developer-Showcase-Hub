@@ -1,11 +1,14 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 import Button from "@/components/UI/Button";
 import Skill from "@/components/UI/Skill";
 import Title from "@/components/UI/Title";
 import {Container} from "@/components/layout";
+import {useStoreSkills} from "@/store/use-store-skills";
 
 const About = () => {
+    const skills = useStoreSkills((state) => state.skills)
     return (
         <section className="w-full bg-[#fafafa] py-20 md:py-28" id="about">
             <Container>
@@ -48,15 +51,7 @@ const About = () => {
                         <h3 className="text-gray-900 text-[20px] mb-6 font-bold">My Skills</h3>
 
                         <ul className="flex flex-wrap gap-3">
-                            <Skill>HTML</Skill>
-                            <Skill>CSS</Skill>
-                            <Skill>JavaScript</Skill>
-                            <Skill>TypeScript</Skill>
-                            <Skill>React</Skill>
-                            <Skill>Next.js</Skill>
-                            <Skill>Tailwind CSS</Skill>
-                            <Skill>GIT</Skill>
-                            <Skill>Redux</Skill>
+                            {skills && skills.map((skill => <Skill key={skill.id}>{skill.item}</Skill>))}
                         </ul>
                     </div>
                 </div>
