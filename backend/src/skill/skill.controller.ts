@@ -1,42 +1,25 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { SkillService } from './skill.service';
 import { CreateSkillDto } from './dto/create-skill.dto';
-import { UpdateSkillDto } from './dto/update-skill.dto';
+import { SkillEntity } from 'src/skill/entities/skill.entity';
+import { DeleteResult } from 'typeorm';
 
 @Controller('skill')
 export class SkillController {
   constructor(private readonly skillService: SkillService) {}
 
   @Post()
-  create(@Body() createSkillDto: CreateSkillDto) {
+  create(@Body() createSkillDto: CreateSkillDto): Promise<SkillEntity> {
     return this.skillService.create(createSkillDto);
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<SkillEntity[]> {
     return this.skillService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.skillService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSkillDto: UpdateSkillDto) {
-    return this.skillService.update(+id, updateSkillDto);
-  }
-
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.skillService.remove(+id);
+  delete(@Param('id') id: string): Promise<DeleteResult> {
+    return this.skillService.delete(id);
   }
 }
