@@ -1,24 +1,27 @@
 import {create} from "zustand/react";
+import {SkillService, SkillType} from "@/api/skill/skill";
 
-interface SkillItem {
-    id: number;
-    item: string;
+interface SkillState {
+    skills: SkillType[];
+    isLoading: boolean;
+    error: string | null;
+    fetchSkills: () => Promise<void>;
 }
 
-interface State {
-    skills: SkillItem[];
-}
+const getAllSkills = new SkillService();
 
-const State: SkillItem[] = [
-    {id: 1, item: "Html"},
-    {id: 2, item: "Css"},
-    {id: 3, item: "Javascript"},
-    {id: 4, item: "React"},
-    {id: 5, item: "Redux"},
-    {id: 6, item: "Zustand"},
-    {id: 7, item: "React-Query"},
-]
+export const useStoreSkills = create<SkillState>((set) => ({
+    skills: [],
+    error: null,
+    isLoading: false,
 
-export const useStoreSkills = create<State>((set) => ({
-    skills: State
+    fetchSkills: async () => {
+        set({isLoading: true});
+        try {
+            const data: SkillType[] = await getAllSkills.getSkills();
+            set({skills: data, isLoading: false, error: null});
+        } catch (error) {
+            set({isLoading: false, error: "Error while fetching skills."});
+        }
+    }
 }))

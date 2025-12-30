@@ -1,14 +1,23 @@
 "use client"
 import Link from "next/link";
-import React from "react";
 import Button from "@/components/UI/Button";
 import Skill from "@/components/UI/Skill";
 import Title from "@/components/UI/Title";
 import {Container} from "@/components/layout";
 import {useStoreSkills} from "@/store/use-store-skills";
+import {useEffect} from "react";
+
 
 const About = () => {
-    const skills = useStoreSkills((state) => state.skills)
+    const {skills, error, isLoading, fetchSkills} = useStoreSkills()
+
+    useEffect(() => {
+        fetchSkills()
+    }, [])
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
+
     return (
         <section className="w-full bg-[#fafafa] py-20 md:py-28" id="about">
             <Container>
@@ -51,7 +60,7 @@ const About = () => {
                         <h3 className="text-gray-900 text-[20px] mb-6 font-bold">My Skills</h3>
 
                         <ul className="flex flex-wrap gap-3">
-                            {skills && skills.map((skill => <Skill key={skill.id}>{skill.item}</Skill>))}
+                            {skills && skills.map((skill => <Skill key={skill.id}>{skill.title}</Skill>))}
                         </ul>
                     </div>
                 </div>
