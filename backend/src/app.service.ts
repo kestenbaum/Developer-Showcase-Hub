@@ -1,8 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { DataSource } from 'typeorm';
 
 @Injectable()
-export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+export class AppService implements OnModuleInit {
+  constructor(private dataSource: DataSource) {}
+
+  async onModuleInit(): Promise<void> {
+    if (this.dataSource.isInitialized) {
+      console.log('Initializing Db');
+    }
   }
 }
