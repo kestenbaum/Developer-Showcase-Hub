@@ -4,8 +4,8 @@ import React from "react"
 import {useStoreMenu} from "@/store/use-store-menu"
 
 const Header = () => {
-    const {open, toggle, close} = useStoreMenu()
-    const menu = useStoreMenu((state) => state.headerMenu)
+    const {open, toggle, close} = useStoreMenu();
+    const menu = useStoreMenu((state) => state.headerMenu);
 
     return (
         <header
