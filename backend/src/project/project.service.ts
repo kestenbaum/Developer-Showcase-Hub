@@ -4,20 +4,39 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Project } from './entities/project.entity';
+import { SkillEntity } from '../skill/entities/skill.entity';
 
 @Injectable()
 export class ProjectService {
   constructor(
+    @InjectRepository(SkillEntity)
+    private readonly skillRepository: Repository<SkillEntity>,
     @InjectRepository(Project) private readonly repo: Repository<Project>,
   ) {}
 
   async create(dto: CreateProjectDto) {
-    const project = this.repo.create(dto);
-    return this.repo.save(project);
+    const skills = await this.skillRepository.find({
+      where: dto.skills?.map((title) => ({ title })) || [],
+    });
+
+    const project = this.repo.create({
+      ...dto,
+      imageUrl: dto.imageUrl || '/default-project.png',
+      skills,
+    });
+
+    const savedProject = await this.repo.save(project);
+
+    return this.repo.findOne({
+      where: { id: savedProject.id },
+      relations: ['skills'],
+    });
   }
 
   async findAll() {
-    return await this.repo.find();
+    return await this.repo.find({
+      relations: ['skills'],
+    });
   }
 
   async findOne(id: string) {
