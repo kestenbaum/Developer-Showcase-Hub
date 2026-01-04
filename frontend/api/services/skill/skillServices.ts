@@ -16,4 +16,26 @@ export class SkillService {
             throw error;
         }
     }
+
+    public async createSkill(skill: Omit<SkillType, "id">){
+        try {
+            const response = await this.axios.post<SkillType>('/skill', skill)
+            return response.data
+        } catch (e: unknown) {
+            const error = e instanceof Error ? e : new Error(String(e));
+            console.error(error.message);
+            throw error;
+        }
+    }
+
+    public async deleteSkill(id: string){
+        try {
+            const response = await this.axios.delete(`/skill/${id}`)
+            return response.data
+        } catch (e: unknown) {
+            const error = e instanceof Error ? e : new Error(String(e));
+            console.error(error.message);
+            throw error;
+        }
+    }
 }
