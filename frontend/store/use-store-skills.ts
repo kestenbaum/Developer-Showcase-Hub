@@ -1,5 +1,5 @@
 import {create} from "zustand/react";
-import {SkillService} from "@/api/services/skill/skillServices";
+import {SkillService} from "@/api/skill/services/skillServices";
 import { SkillType } from "@/api/types";
 
 interface SkillState {
