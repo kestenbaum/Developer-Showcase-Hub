@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement & HTMLTextAreaElement> {
-    label: string;
+    label?: string;
     isTextarea?: boolean;
 }
 

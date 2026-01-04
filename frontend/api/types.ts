@@ -4,7 +4,7 @@ export type SkillType = {
 }
 
 export interface ProjectType {
-    id: string
+    id?: string
     title: string
     description: string
     imageUrl?: string

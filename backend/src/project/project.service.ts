@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Project } from './entities/project.entity';
 import { SkillEntity } from '../skill/entities/skill.entity';
 
@@ -15,22 +15,22 @@ export class ProjectService {
   ) {}
 
   async create(dto: CreateProjectDto) {
-    const skills = await this.skillRepository.find({
-      where: dto.skills?.map((title) => ({ title })) || [],
-    });
+    const skills =
+      dto.skills && dto.skills.length > 0
+        ? await this.skillRepository.findBy({
+            id: In(dto.skills),
+          })
+        : [];
 
     const project = this.repo.create({
-      ...dto,
-      imageUrl: dto.imageUrl || '/dopefolio.png',
-      skills,
+      title: dto.title,
+      description: dto.description,
+      linkUrl: dto.linkUrl,
+      imageUrl: dto.imageUrl,
+      skills: skills,
     });
 
-    const savedProject = await this.repo.save(project);
-
-    return this.repo.findOne({
-      where: { id: savedProject.id },
-      relations: ['skills'],
-    });
+    return this.repo.save(project);
   }
 
   async findAll() {
