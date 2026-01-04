@@ -21,7 +21,7 @@ export class ProjectService {
 
     const project = this.repo.create({
       ...dto,
-      imageUrl: dto.imageUrl || '/default-project.png',
+      imageUrl: dto.imageUrl || '/dopefolio.png',
       skills,
     });
 
