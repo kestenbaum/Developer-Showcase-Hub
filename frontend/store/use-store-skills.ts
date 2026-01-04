@@ -1,5 +1,5 @@
 import {create} from "zustand/react";
-import {SkillService} from "@/api/skill/services/skillServices";
+import { skillService } from "@/api/skill/services/skillServices";
 import { SkillType } from "@/api/types";
 
 interface SkillState {
@@ -9,8 +9,6 @@ interface SkillState {
     fetchSkills: () => Promise<void>;
 }
 
-const getAllSkills = new SkillService();
-
 export const useStoreSkills = create<SkillState>((set) => ({
     skills: [],
     error: null,
@@ -19,7 +17,7 @@ export const useStoreSkills = create<SkillState>((set) => ({
     fetchSkills: async () => {
         set({isLoading: true});
         try {
-            const data: SkillType[] = await getAllSkills.getSkills();
+            const data: SkillType[] = await skillService.getSkills();
             set({skills: data, isLoading: false, error: null});
         } catch (e: unknown) {
             const error = e instanceof Error ? e : new Error(String(e));

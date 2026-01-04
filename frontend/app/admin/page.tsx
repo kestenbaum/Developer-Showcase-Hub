@@ -2,10 +2,8 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useStoreSkills } from "@/store/use-store-skills";
 import { Button, Field, Skill } from "@/components/UI";
-import { SkillService } from "@/api/skill/services/skillServices";
+import { skillService } from "@/api/skill/services/skillServices";
 import { SkillType } from "@/api/types";
-
-const skillService = new SkillService();
 
 const Page = () => {
     const { skills, fetchSkills, error, isLoading } = useStoreSkills();
