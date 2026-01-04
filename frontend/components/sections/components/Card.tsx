@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import TestImage from "@/public/dopefolio.jpeg";
+import TestImage from "@/public/dopefolio.png";
 import Button from "@/components/UI/Button";
 import Skill from "@/components/UI/Skill";
 
